@@ -1,119 +1,94 @@
-# 🚀 Colección de Ejercicios PHP - Arquitectura MVC Nativa
+# 🚀 Colección de Ejercicios - Laravel 11 MVC
 
-Bienvenido a este repositorio. Aquí encontrarás una colección de **11 aplicaciones web** desarrolladas completamente en **PHP nativo**, implementando el patrón de arquitectura de software **MVC (Modelo-Vista-Controlador)** desde cero, sin el uso de frameworks.
+Bienvenido a este repositorio. Aquí encontrarás una colección de **11 aplicaciones web** desarrolladas en **Laravel**, implementando el patrón de arquitectura **MVC (Modelo-Vista-Controlador)** de forma profesional.
 
-> **Nota:** Para facilitar la portabilidad y el despliegue rápido, este proyecto **no utiliza bases de datos SQL**. La persistencia de datos se maneja mediante archivos **JSON** locales.
+> **Nota:** Este proyecto ha sido migrado de PHP Nativo a **Laravel Framework**. Utiliza **SQLite** como base de datos para facilitar la portabilidad y **Blade** para las vistas.
 
 ## 🛠️ Tecnologías Utilizadas
 
-*   **Lenguaje:** PHP 8+
-*   **Arquitectura:** MVC (Model-View-Controller) Manual
-*   **Base de Datos:** Archivos JSON (NoSQL flat-file)
-*   **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-*   **Servidor:** Compatible con Apache (XAMPP/WAMP/Laragon)
+*   **Framework:** Laravel 10/11
+*   **Lenguaje:** PHP 8.2+
+*   **Base de Datos:** SQLite (Sin configuraciones complejas)
+*   **Frontend:** Bootstrap 5, Blade Templates, JavaScript
+*   **Validaciones:** Laravel Request Validation
+*   **ORM:** Eloquent
 
 ---
 
 ## 📂 Estructura del Proyecto
 
-Cada ejercicio sigue rigurosamente la misma estructura de carpetas para mantener el orden y la escalabilidad:
+El proyecto unifica 11 ejercicios en una sola instalación de Laravel:
 
-```text
-Nombre_Del_Ejercicio/
-├── config/           # Configuraciones globales (si aplica)
-├── controllers/      # Lógica que conecta el usuario con el sistema
-├── models/           # Lógica de datos y lectura/escritura de JSON
-├── views/            # Interfaz gráfica (HTML/CSS)
-├── data/             # Almacenamiento de datos (archivos .json)
-├── index.php         # Router principal (Punto de entrada)
-└── style.css         # Estilos específicos del ejercicio
-```
-# 📋 Lista de Proyectos
-
-### **1. 📝 Lista de Tareas (To-Do List)**
-Gestor clásico de tareas.  
-Permite crear tareas, marcarlas como completadas (tachado visual) y eliminarlas.  
-Los datos persisten en **tasks.json**.
+*   `routes/web.php`: Rutas definidas para cada ejercicio.
+*   `app/Http/Controllers/`: Lógica de negocio separada por controlador.
+*   `app/Models/`: Modelos Eloquent con Casting y Relaciones.
+*   `resources/views/`: Vistas organizadas por carpetas (`tasks`, `tips`, `memory`, etc.).
 
 ---
 
-### **2. 💸 Calculadora de Propinas**
-Herramienta para calcular el total a pagar según el porcentaje de propina.  
-Guarda un historial de los últimos cálculos realizados.
+## 📋 Lista de Proyectos Incluidos
+
+1.  **📝 Lista de Tareas:** CRUD completo con persistencia en BD.
+2.  **💸 Calculadora de Propinas:** Lógica matemática y guardado de historial.
+3.  **🔐 Generador de Contraseñas:** Algoritmo aleatorio y almacenamiento seguro.
+4.  **💰 Gestor de Gastos:** Cálculo de totales usando colecciones de Laravel (`sum`).
+5.  **📅 Sistema de Reservas:** Validación de disponibilidad (impide citas duplicadas).
+6.  **📝 Gestor de Notas:** Buscador en tiempo real usando `LIKE` en SQL.
+7.  **🗓️ Calendario de Eventos:** Manejo de fechas avanzado con la librería **Carbon**.
+8.  **🍳 Plataforma de Recetas:** Sistema de filtros dinámicos (Categoría y Búsqueda).
+9.  **🧠 Juego de Memoria:** Lógica mixta (Backend baraja cartas, Frontend juega).
+10. **📊 Plataforma de Encuestas:** Uso de **Relaciones Eloquent** (1 a muchos) y gráficos.
+11. **⏱️ Cronómetro Online:** Integración JS/PHP guardando arrays JSON en base de datos.
 
 ---
 
-### **3. 🔐 Generador de Contraseñas**
-Genera contraseñas fuertes aleatorias con opciones personalizables:  
-- Longitud  
-- Mayúsculas  
-- Números  
-- Símbolos  
+## 🚀 Instalación y Uso
 
-Incluye botón para copiar al portapapeles.
+Si descargas este repositorio, sigue estos pasos para hacerlo funcionar:
 
----
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/KXwyn/MVC-exercises.git
+    cd Mis-Ejercicios-MVC-PHP
+    ```
 
-### **4. 💰 Gestor de Gastos**
-Aplicación de finanzas personales.  
-Permite registrar gastos por categoría y ver un resumen total.  
-Incluye clases CSS dinámicas según tipo de gasto.
+2.  **Instalar dependencias:**
+    ```bash
+    composer install
+    ```
 
----
+3.  **Configurar entorno:**
+    Copia el archivo de ejemplo y genera la llave de la aplicación.
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-### **5. 📅 Sistema de Reservas**
-Agenda citas validando disponibilidad.  
-El modelo evita crear dos reservas en la misma fecha y hora.
+4.  **Configurar Base de Datos:**
+    Abre el archivo `.env` y asegúrate de usar SQLite:
+    ```env
+    DB_CONNECTION=sqlite
+    # Comenta las líneas de DB_HOST, DB_DATABASE, etc.
+    ```
+    Luego crea el archivo vacío en la carpeta database:
+    *Windows:* `type nul > database/database.sqlite`
+    *Mac/Linux:* `touch database/database.sqlite`
 
----
+5.  **Migrar Tablas:**
+    Crea las tablas en la base de datos.
+    ```bash
+    php artisan migrate
+    ```
 
-### **6. 📝 Gestor de Notas (Estilo Google Keep)**
-Muro de notas con buscador en tiempo real.  
-Permite filtrar por título, contenido y color.
-
----
-
-### **7. 🗓️ Calendario de Eventos**
-Calendario visual interactivo.  
-Permite agregar eventos por fecha y navegar entre meses.
-
----
-
-### **8. 🍳 Plataforma de Recetas**
-Libro de recetas digital.  
-Guarda ingredientes, pasos y categoría.  
-Permite filtrar por:  
-- Desayuno  
-- Almuerzo  
-- Cena  
-- Postre  
-
-Incluye buscador.
+6.  **Ejecutar:**
+    ```bash
+    php artisan serve
+    ```
+    Entra a: `http://127.0.0.1:8000`
 
 ---
 
-### **9. 🧠 Juego de Memoria**
-Juego interactivo donde PHP genera el tablero y JavaScript maneja la lógica.  
-Guarda **ranking (Top 5)** de mejores puntajes.
+## 👤 Autor
 
----
-
-### **10. 📊 Plataforma de Encuestas**
-Sistema de votación con preguntas y opciones múltiples.  
-Al votar, muestra gráficas de barras porcentuales en tiempo real.
-
----
-
-### **11. ⏱️ Cronómetro Online**
-Cronómetro de alta precisión con JavaScript.  
-Permite registrar vueltas (laps) y guardar historial en el servidor.
-
----
-
-# 🚀 Instalación y Uso
-
-### 1️⃣ Clonar el repositorio
-Ubícate en la carpeta del servidor local (`www` en WAMP / `htdocs` en XAMPP):
-
-```bash
-git clone https://github.com/KXwyn/MVC-exercises.git
+Desarrollado por Miguel Cortés
+Ejercicio académico para demostrar dominio de Laravel, Eloquent ORM y Arquitectura MVC.
