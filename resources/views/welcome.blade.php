@@ -19,6 +19,16 @@
                     </div>
                 </div>
             </div>
+            <!-- Ejercicio 2 -->
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">2. Calculadora Propinas</h5>
+                        <p class="card-text">Cálculo matemático con historial en BD.</p>
+                        <a href="{{ route('tips.index') }}" class="btn btn-success">Ir al ejercicio</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- Aquí agregaremos los demás... -->
 
