@@ -49,7 +49,6 @@ Si descargas este repositorio, sigue estos pasos para hacerlo funcionar:
 1.  **Clonar el repositorio:**
     ```bash
     git clone https://github.com/KXwyn/MVC-exercises.git
-    cd Mis-Ejercicios-MVC-PHP
     ```
 
 2.  **Instalar dependencias:**
